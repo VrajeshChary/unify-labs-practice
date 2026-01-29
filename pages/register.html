@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevConf 2026 - Register</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Register for DevConf 2026</h1>
+    </header>
+
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="speakers.html">Speakers</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="register.html">Register</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+    <main>
+      <!-- Breadcrumbs -->
+      <ul class="breadcrumbs">
+        <li><a href="../index.html">Home</a></li>
+        <li>Register</li>
+      </ul>
+
+      <section>
+        <h2>Registration Form</h2>
+        <p>
+          Join us for the biggest tech event of the year! Please fill out the
+          form below.
+        </p>
+
+        <form action="#" method="POST" enctype="multipart/form-data">
+          <!-- Personal Information -->
+          <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="firstname">First Name: *</label>
+            <input
+              type="text"
+              id="firstname"
+              name="firstname"
+              required
+              placeholder="John"
+            />
+
+            <label for="lastname">Last Name: *</label>
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              required
+              placeholder="Doe"
+            />
+
+            <label for="email">Email: *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              placeholder="john.doe@example.com"
+            />
+
+            <label for="phone">Phone Number:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+91 98765 43210"
+            />
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" />
+          </fieldset>
+
+          <!-- Professional Details -->
+          <fieldset>
+            <legend>Professional Details</legend>
+
+            <label for="jobtitle">Job Title:</label>
+            <input
+              type="text"
+              id="jobtitle"
+              name="jobtitle"
+              placeholder="Software Engineer"
+            />
+
+            <label for="company">Company / Organization:</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Acme Corp"
+            />
+
+            <label for="experience">Years of Experience:</label>
+            <input
+              type="number"
+              id="experience"
+              name="experience"
+              min="0"
+              max="50"
+              placeholder="5"
+            />
+
+            <label for="arrival-time">Expected Arrival Time:</label>
+            <input type="time" id="arrival-time" name="arrival-time" />
+
+            <label for="industry">Industry:</label>
+            <select id="industry" name="industry">
+              <option value="">-- Select Industry --</option>
+              <optgroup label="Technology">
+                <option value="software">Software Development</option>
+                <option value="hardware">Hardware</option>
+                <option value="data">Data Science</option>
+              </optgroup>
+              <optgroup label="Other Sectors">
+                <option value="healthcare">Healthcare</option>
+                <option value="finance">Finance</option>
+                <option value="education">Education</option>
+              </optgroup>
+            </select>
+          </fieldset>
+
+          <!-- Conference Preferences -->
+          <fieldset>
+            <legend>Conference Preferences</legend>
+
+            <label>Attendance Type:</label>
+            <div>
+              <input
+                type="radio"
+                id="inperson"
+                name="attendance"
+                value="inperson"
+                checked
+              />
+              <label for="inperson" style="display: inline; font-weight: normal"
+                >In-Person</label
+              >
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="virtual"
+                name="attendance"
+                value="virtual"
+              />
+              <label for="virtual" style="display: inline; font-weight: normal"
+                >Virtual</label
+              >
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="hybrid"
+                name="attendance"
+                value="hybrid"
+              />
+              <label for="hybrid" style="display: inline; font-weight: normal"
+                >Hybrid</label
+              >
+            </div>
+            <br />
+
+            <label>Workshop Selection (Select up to 5):</label>
+            <div>
+              <input type="checkbox" id="ws1" name="workshop" value="react" />
+              <label for="ws1" style="display: inline; font-weight: normal"
+                >Advanced React Patterns</label
+              >
+            </div>
+            <div>
+              <input type="checkbox" id="ws2" name="workshop" value="ai" />
+              <label for="ws2" style="display: inline; font-weight: normal"
+                >AI Integration 101</label
+              >
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="ws3"
+                name="workshop"
+                value="security"
+              />
+              <label for="ws3" style="display: inline; font-weight: normal"
+                >Web Security Fundamentals</label
+              >
+            </div>
+            <div>
+              <input type="checkbox" id="ws4" name="workshop" value="cloud" />
+              <label for="ws4" style="display: inline; font-weight: normal"
+                >Cloud Architecture</label
+              >
+            </div>
+            <div>
+              <input type="checkbox" id="ws5" name="workshop" value="ux" />
+              <label for="ws5" style="display: inline; font-weight: normal"
+                >UX/UI Design Systems</label
+              >
+            </div>
+            <br />
+
+            <label for="tshirt">T-Shirt Size:</label>
+            <select id="tshirt" name="tshirt">
+              <option value="xs">XS</option>
+              <option value="s">S</option>
+              <option value="m">M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+              <option value="xxl">XXL</option>
+            </select>
+
+            <label for="dietary">Dietary Requirements:</label>
+            <textarea
+              id="dietary"
+              name="dietary"
+              maxlength="500"
+              placeholder="Vegetarian, Gluten-free, etc."
+            ></textarea>
+          </fieldset>
+
+          <!-- Additional Information -->
+          <fieldset>
+            <legend>Additional Information</legend>
+
+            <label for="accommodations">Special Accommodations:</label>
+            <textarea
+              id="accommodations"
+              name="accommodations"
+              placeholder="Wheelchair access, sign language interpreter, etc."
+            ></textarea>
+
+            <label for="referral">How did you hear about us?</label>
+            <select id="referral" name="referral">
+              <option value="social">Social Media</option>
+              <option value="email">Email Newsletter</option>
+              <option value="friend">Friend/Colleague</option>
+              <option value="search">Search Engine</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label for="resume">Upload Resume/CV (PDF only):</label>
+            <input type="file" id="resume" name="resume" accept=".pdf" />
+          </fieldset>
+
+          <!-- Terms & Conditions -->
+          <fieldset>
+            <legend>Terms & Conditions</legend>
+            <div>
+              <input type="checkbox" id="terms" name="terms" required />
+              <label for="terms" style="display: inline; font-weight: normal"
+                >I agree to the Terms and Conditions *</label
+              >
+            </div>
+            <div>
+              <input type="checkbox" id="newsletter" name="newsletter" />
+              <label
+                for="newsletter"
+                style="display: inline; font-weight: normal"
+                >Subscribe to our newsletter</label
+              >
+            </div>
+          </fieldset>
+
+          <div style="margin-top: 1rem">
+            <button type="submit">Submit Registration</button>
+            <button type="reset">Reset Form</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <hr />
+      <p>&copy; 2026 DevConf India. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
