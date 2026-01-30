@@ -1,39 +1,37 @@
-# DevConf 2026 Website (Day 2 Enhancement)
+# DevConf 2026 Website (Phase 1: Basic Styling)
 
-This project contains the enhanced website for DevConf 2026, featuring Semantic HTML5, comprehensive forms, and multimedia integration.
+This project contains the styled website for DevConf 2026, building upon the basic HTML structure with foundational CSS.
 
-## Features
+## Styling Approach (Basic)
 
-- **Semantic HTML5**: All pages use proper tags (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`) for better accessibility and SEO.
-- **Registration Form**: A robust form (`pages/register.html`) with validation for personal details, professional info, and conference preferences.
-- **Multimedia**:
-  - Promotional video on the Homepage (`index.html`).
-  - Speaker introduction videos on the Speakers page (`pages/speakers.html`).
-- **Contact & FAQ**:
-  - Dedicated Contact page with a map and inquiry form (`pages/contact.html`).
-  - FAQ page with categorized information (`pages/faq.html`).
-- **Professional Styling**: Unified `style.css` for a consistent, responsive, and modern look.
+We have applied a clean and professional design using core CSS concepts, avoiding complex frameworks or advanced features.
+
+### Key Concepts Used
+
+- **The Box Model**: Used `box-sizing: border-box` to ensure padding and borders don't increase element size unexpectedly.
+- **Floats**: Used `float: left` and `float: right` for the Navigation bar layout.
+- **Typography**: Imported **Inter** and **Roboto** from Google Fonts for a distinct hierarchy between headings and body text.
+- **Standard Selectors**: Used element, class, and descendant selectors (e.g., `.nav-links a:hover`) to apply styles.
+- **Hex Colors**: Used a consistent color palette defined by hex codes.
+
+### Color Palette
+
+- **Primary Orange**: `#f97316`
+- **Dark Blue**: `#2c3e50`
+- **Background Grey**: `#f4f7f6`
+- **Dark Grey Text**: `#333333`
 
 ## File Structure
 
-- **root/**:
-  - `index.html`: The main landing page.
-  - `style.css`: Global stylesheet.
-  - `README.md`: Project documentation.
+- **index.html**: Home page.
+- **css/styles.css**: Main stylesheet linked to all pages.
 - **pages/**:
-  - `about.html`, `schedule.html`, `speakers.html`, `sponsors.html`: Inner pages.
-  - `register.html`, `contact.html`, `faq.html`: New functional pages.
-- **assets/**:
-  - `images/`: Stores project images.
-  - `videos/`: Stores video assets (currently placeholders).
+  - `about.html`
+  - `speakers.html`
+  - `schedule.html`
+  - `sponsors.html`
 
 ## How to Run
 
-1. Open `index.html` in any modern web browser.
-2. Navigate effectively using the top navigation bar or breadcrumbs.
-3. Test forms (Registration, Contact) to see validation in action.
-
-## Notes
-
-- Video files in `assets/videos/` are placeholders. The code references standard formats (`.mp4`, `.webm`) and includes poster images.
-- All forms use `method="POST"` to a dummy action `#` for demonstration purposes.
+1. Open `index.html` in your web browser.
+2. Click the navigation links to explore the 5 pages.

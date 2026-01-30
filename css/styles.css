@@ -1,0 +1,233 @@
+/* DevConf 2026 - Basic Stylesheet */
+/* Focusing on CSS Fundamentals: Box Model, Typography, and Standard Layouts */
+
+/* 
+  Colors Used:
+  Background: #f4f7f6 (Light Grey)
+  Text: #333333 (Dark Grey)
+  Headings: #2c3e50 (Dark Blue)
+  Accent: #f97316 (Orange)
+  Footer: #2c3e50 (Dark Blue)
+*/
+
+/* Link to Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500&display=swap");
+
+/* =========================================
+   Global Resets and Basic Styles
+   ========================================= */
+
+/* Apply Box Sizing to every element for predictable sizes */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif; /* Body font */
+  line-height: 1.6;
+  color: #333333;
+  background-color: #f4f7f6;
+}
+
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================
+   Typography
+   ========================================= */
+
+/* Headings use the Inter font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================
+   Navigation Bar (Using Floats)
+   ========================================= */
+.navbar {
+  background-color: #ffffff;
+  padding: 20px 40px;
+  border-bottom: 2px solid #eaeaea;
+  overflow: hidden; /* Clears floats */
+}
+
+.logo {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  color: #2c3e50;
+  display: inline-block;
+  float: left; /* Float logo to the left */
+}
+
+.logo span {
+  color: #f97316; /* Orange accent */
+}
+
+.nav-links {
+  list-style: none; /* Remove bullet points */
+  display: inline-block;
+  float: right; /* Float links to the right */
+  margin-top: 5px;
+}
+
+.nav-links li {
+  display: inline; /* Display list items in a row */
+  margin-left: 25px;
+}
+
+.nav-links a {
+  color: #666666;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Change color on hover */
+.nav-links a:hover,
+.nav-links a.active {
+  color: #f97316;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero-section {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero-section h1 {
+  color: #ffffff;
+  font-size: 3rem; /* 48px */
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem; /* 20px */
+  margin-bottom: 40px;
+  color: #cccccc;
+}
+
+/* Button Styling */
+.primary-btn {
+  background-color: #f97316;
+  color: #ffffff;
+  padding: 15px 35px;
+  font-weight: 600;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.primary-btn:hover {
+  background-color: #e8630a; /* Darker orange */
+}
+
+/* =========================================
+   Page Layout & Containers
+   ========================================= */
+
+/* Center the main content */
+.main-content,
+.page-container {
+  max-width: 1000px;
+  margin: 0 auto; /* Auto margin centers the block */
+  padding: 60px 20px;
+  min-height: 400px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   Content Boxes and Cards
+   ========================================= */
+.info-card,
+.content-box,
+.speaker-profile {
+  background-color: #ffffff;
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Speaker Profile Specifics */
+.speaker-profile {
+  border-left: 5px solid #f97316; /* Left accent border */
+}
+
+.speaker-profile h4 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.role {
+  color: #f97316;
+  font-weight: 500;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.bio {
+  color: #555555;
+}
+
+/* Schedule and Sponsors helpers */
+.schedule-day {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eaeaea;
+  margin: 30px 0;
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.site-footer {
+  text-align: center;
+  padding: 40px;
+  background-color: #2c3e50;
+  color: #ffffff;
+  clear: both; /* Clear any floats */
+}
+
+.site-footer p {
+  margin-bottom: 0;
+}
