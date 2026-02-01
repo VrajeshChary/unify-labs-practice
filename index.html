@@ -10,6 +10,11 @@
     <!-- Sticky Navbar -->
     <nav class="navbar">
       <div class="logo">Dev<span>Conf</span></div>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="pages/about.html">About</a></li>
@@ -18,6 +23,23 @@
         <li><a href="pages/sponsors.html">Sponsors</a></li>
       </ul>
     </nav>
+
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".nav-links li a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+    </script>
 
     <!-- Hero Section with Gradient -->
     <header class="hero-section">

@@ -1,37 +1,55 @@
-# DevConf 2026 Website (Phase 1: Basic Styling)
+# DevConf 2026 Website
 
-This project contains the styled website for DevConf 2026, building upon the basic HTML structure with foundational CSS.
+Welcome to the official styled website for DevConf 2026. This project is a fully responsive, multi-page conference website built with HTML5 and Advanced CSS3.
 
-## Styling Approach (Basic)
+## 🚀 Features
 
-We have applied a clean and professional design using core CSS concepts, avoiding complex frameworks or advanced features.
+### Phase 3: Final Polish (Current Version)
 
-### Key Concepts Used
+- **Responsive Design**: Fully responsive layout optimized for Desktop, Tablet, and Mobile devices.
+- **Interactive Navigation**:
+  - Sticky Header with **Glassmorphism** effect (`backdrop-filter`).
+  - **Hamburger Menu** with slide-out drawer for mobile devices.
+- **Advanced Animations**:
+  - Custom `@keyframes` entrance animations for Hero content.
+  - Smooth hover transitions for cards, buttons, and links.
+- **Modern Layouts**: Built using **CSS Grid** (Speakers) and **Flexbox** (Navigation, Hero, Schedule).
 
-- **The Box Model**: Used `box-sizing: border-box` to ensure padding and borders don't increase element size unexpectedly.
-- **Floats**: Used `float: left` and `float: right` for the Navigation bar layout.
-- **Typography**: Imported **Inter** and **Roboto** from Google Fonts for a distinct hierarchy between headings and body text.
-- **Standard Selectors**: Used element, class, and descendant selectors (e.g., `.nav-links a:hover`) to apply styles.
-- **Hex Colors**: Used a consistent color palette defined by hex codes.
+## 🛠️ Technology Stack
 
-### Color Palette
+- **HTML5**: Semantic structure.
+- **CSS3**: Custom variables, Grid, Flexbox, Animations, and Media Queries.
+- **Fonts**: Inter (Headings) and Roboto (Body) via Google Fonts.
+- **JavaScript**: Minimal vanilla JS for the mobile menu toggle.
 
-- **Primary Orange**: `#f97316`
-- **Dark Blue**: `#2c3e50`
-- **Background Grey**: `#f4f7f6`
-- **Dark Grey Text**: `#333333`
+## 📂 File Structure
 
-## File Structure
+```
+/
+├── index.html          # specific semantic structure for home
+├── css/
+│   └── styles.css      # Single source of truth for styles (OOCSS)
+├── pages/
+│   ├── about.html
+│   ├── speakers.html
+│   ├── schedule.html
+│   └── sponsors.html
+└── assets/             # Images and icons
+```
 
-- **index.html**: Home page.
-- **css/styles.css**: Main stylesheet linked to all pages.
-- **pages/**:
-  - `about.html`
-  - `speakers.html`
-  - `schedule.html`
-  - `sponsors.html`
+## 🎨 Design System
 
-## How to Run
+- **Primary Color**: `#2c3e50` (Dark Navy)
+- **Accent Color**: `#f97316` (Vibrant Orange)
+- **Typography**: Clean, readable sans-serif fonts.
+- **Visuals**: usage of shadows, gradients, and rounded corners for a friendly yet professional feel.
 
-1. Open `index.html` in your web browser.
-2. Click the navigation links to explore the 5 pages.
+## 🏃 How to Run
+
+1.  **Clone/Download** the repository.
+2.  Open `index.html` in any modern web browser (Chrome, Firefox, Edge).
+3.  Resize the browser window to test responsive behaviors!
+
+---
+
+_Developed for DevConf 2026_
