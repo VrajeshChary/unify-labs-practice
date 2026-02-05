@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Card Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
+    <main class="dashboard-container">
+      <header class="dashboard-header">
+        <h1>UI Collection</h1>
+        <p>Experimental card interactions & layouts</p>
+      </header>
+
+      <section class="card-grid">
+        <!-- 1. 3D Flip Card -->
+        <div class="card card-3d-flip">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="icon">🔄</div>
+              <h3>3D Transform</h3>
+              <p>Hover to flip</p>
+            </div>
+            <div class="flip-back">
+              <h3>Rear Side</h3>
+              <p>Revealed using CSS perspective and rotateY transforms.</p>
+              <button class="btn-sm">Action</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Glassmorphism Card -->
+        <div class="card card-glass">
+          <div class="glass-content">
+            <div class="chip">Glass</div>
+            <h3>Frost Effect</h3>
+            <p>
+              Using <code>backdrop-filter</code> to create a premium frosted
+              glass look over colorful backgrounds.
+            </p>
+            <div class="glass-shine"></div>
+          </div>
+        </div>
+
+        <!-- 3. Animated Border Card -->
+        <div class="card card-animated-border">
+          <div class="border-content">
+            <h3>Neon Border</h3>
+            <p>
+              Continuous gradient rotation using conic-gradient and
+              pseudo-elements.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Image Zoom Card -->
+        <div class="card card-image-zoom">
+          <div class="img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
+              alt="Abstract 3D"
+            />
+          </div>
+          <div class="zoom-caption">
+            <h3>Hover Zoom</h3>
+            <p>Scale transform on hover</p>
+          </div>
+        </div>
+
+        <!-- 5. Progress Stats Card -->
+        <div class="card card-progress">
+          <h3>Project Status</h3>
+          <div class="stat-row">
+            <div class="stat-info">
+              <span>Design</span>
+              <span>85%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill fill-1"></div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-info">
+              <span>Development</span>
+              <span>60%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill fill-2"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Accordion -->
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <input type="checkbox" id="faq1" class="accordion-input" />
+            <label for="faq1" class="accordion-header">
+              How does the 3D flip work?
+              <span class="cross">+</span>
+            </label>
+            <div class="accordion-content">
+              <div class="inner">
+                It relies on `transform-style: preserve-3d` on the parent and
+                `backface-visibility: hidden` on the faces. Hovering rotates the
+                parent 180 degrees.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <input type="checkbox" id="faq2" class="accordion-input" />
+            <label for="faq2" class="accordion-header">
+              Is this responsive?
+              <span class="cross">+</span>
+            </label>
+            <div class="accordion-content">
+              <div class="inner">
+                Yes! We use CSS Grid `repeat(auto-fit, minmax(300px, 1fr))`
+                which automatically wraps cards to new rows based on available
+                viewport width.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <input type="checkbox" id="faq3" class="accordion-input" />
+            <label for="faq3" class="accordion-header">
+              What is Glassmorphism?
+              <span class="cross">+</span>
+            </label>
+            <div class="accordion-content">
+              <div class="inner">
+                Glassmorphism creates a sense of depth and hierarchy using
+                transparency, blur (`backdrop-filter: blur()`), and subtle white
+                borders to mimic frosted glass.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,454 @@
+:root {
+  --bg-dark: #0f172a;
+  --text-light: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #6366f1;
+  --secondary: #ec4899;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-radius: 20px;
+  --font-main: "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Atmosphere */
+.background-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: -100px;
+  left: -100px;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--secondary);
+  bottom: -50px;
+  right: -50px;
+  animation: float 8s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes float {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(50px, 50px);
+  }
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.dashboard-header {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.dashboard-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  color: var(--text-muted);
+}
+
+/* --- Card Grid --- */
+.card-grid {
+  display: grid;
+  /* Responsive Masonry-style Grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.card {
+  height: 350px;
+  border-radius: var(--card-radius);
+  position: relative;
+}
+
+/* --- 1. 3D Flip Card --- */
+.card-3d-flip {
+  perspective: 1000px; /* Essential for 3D effect */
+  background: transparent;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card-3d-flip:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  border-radius: var(--card-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.flip-front {
+  background-color: #1e293b;
+  border: 1px solid var(--glass-border);
+}
+
+.flip-back {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  transform: rotateY(180deg);
+}
+
+.flip-front .icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.btn-sm {
+  margin-top: 15px;
+  padding: 8px 20px;
+  background: white;
+  color: var(--btn-color, #000);
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-sm:hover {
+  transform: scale(1.05);
+}
+
+/* --- 2. Glassmorphism Card --- */
+.card-glass {
+  /* No solid background, just blur */
+  background: transparent;
+}
+
+.glass-content {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  border-radius: var(--card-radius);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.chip {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  align-self: flex-start;
+  margin-bottom: auto;
+}
+
+.glass-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+/* --- 3. Animated Border Card --- */
+.card-animated-border {
+  position: relative;
+  overflow: hidden;
+  background: #1e293b;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The rotating gradient */
+.card-animated-border::before {
+  content: "";
+  position: absolute;
+  width: 250%; /* Make it large enough to cover corners when rotating */
+  height: 250%;
+  background: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    var(--primary),
+    var(--secondary)
+  );
+  animation: rotate-border 4s linear infinite;
+  z-index: -2;
+}
+
+/* The inner solid background to hide the center of the gradient */
+.card-animated-border::after {
+  content: "";
+  position: absolute;
+  inset: 3px; /* Border thickness */
+  background: #0f172a;
+  border-radius: calc(var(--card-radius) - 3px);
+  z-index: -1;
+}
+
+.border-content {
+  padding: 30px;
+  text-align: center;
+  z-index: 1;
+}
+
+@keyframes rotate-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- 4. Image Zoom Card --- */
+.card-image-zoom {
+  overflow: hidden; /* Mask the image */
+  background: #000;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--card-radius);
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.7;
+}
+
+.card-image-zoom:hover .img-wrapper img {
+  transform: scale(1.15);
+  opacity: 0.5;
+}
+
+.zoom-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.card-image-zoom:hover .zoom-caption {
+  transform: translateY(0);
+}
+
+/* --- 5. Progress Stats Card --- */
+.card-progress {
+  background: #1e293b;
+  border: 1px solid var(--glass-border);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-progress h3 {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.stat-row {
+  margin-bottom: 25px;
+}
+
+.stat-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  width: 0%; /* Start at 0 for animation */
+  animation: fill-bar 1.5s ease-out forwards;
+}
+
+.fill-1 {
+  background: var(--primary);
+  animation-delay: 0.2s;
+  --target-width: 85%;
+}
+
+.fill-2 {
+  background: var(--secondary);
+  animation-delay: 0.4s;
+  --target-width: 60%;
+}
+
+@keyframes fill-bar {
+  to {
+    width: var(--target-width);
+  }
+}
+
+/* --- CSS-Only Accordion --- */
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.accordion-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Hide the checkbox */
+.accordion-input {
+  display: none;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.accordion-header:hover {
+  color: var(--primary);
+}
+
+.cross {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  color: var(--text-muted);
+}
+
+.accordion-content .inner {
+  padding-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Logic: When checkbox is checked, expand content and rotate cross */
+.accordion-input:checked ~ .accordion-content {
+  max-height: 200px; /* Arbitrary large height */
+}
+
+.accordion-input:checked ~ .accordion-header .cross {
+  transform: rotate(45deg);
+  color: var(--secondary);
+}
+
+/* Responsive adjust */
+@media (max-width: 768px) {
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .card {
+    height: 300px;
+  }
+}
