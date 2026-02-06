@@ -1,0 +1,309 @@
+:root {
+  --bg-color: #fafafa;
+  --white: #ffffff;
+  --border-color: #dbdbdb;
+  --link-color: #00376b;
+  --btn-color: #0095f6;
+  --btn-hover: #1877f2;
+  --text-color: #262626;
+  --secondary-text: #8e8e8e;
+  --facebook-color: #385185;
+  --error-color: #ed4956;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+/* --- Auth Section --- */
+.auth-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.auth-form-wrapper {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-box,
+.signup-box {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: "Grand Hotel", cursive;
+  font-size: 3rem;
+  margin: 20px 0 30px;
+}
+
+/* Floating Label Inputs */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 6px;
+  height: 38px;
+  background: #fafafa;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+
+.input-group:focus-within {
+  border: 1px solid #a8a8a8;
+}
+
+.input-group input {
+  background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding: 9px 8px 0; /* Padding moves text down */
+  font-size: 12px;
+  outline: none;
+  z-index: 2;
+}
+
+.input-group label {
+  position: absolute;
+  left: 8px;
+  font-size: 12px;
+  color: var(--secondary-text);
+  transition: all 0.1s ease-out;
+  pointer-events: none;
+  z-index: 1;
+  transform-origin: left top;
+}
+
+/* Floating Label Logic:
+   When input is focused OR when placeholder is NOT shown (meaning user typed something)
+*/
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  transform: translateY(-10px);
+  font-size: 10px;
+}
+
+.login-btn {
+  background-color: var(--btn-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  padding: 5px 9px;
+  margin-top: 15px;
+  cursor: pointer;
+  opacity: 0.3; /* Default disabled look */
+  pointer-events: none;
+  height: 30px;
+}
+
+.login-btn.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.or-text {
+  margin: 0 15px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--secondary-text);
+}
+
+.fb-login {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--facebook-color);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 12px;
+  margin-top: 12px;
+  color: var(--link-color);
+}
+
+.signup-box p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.signup-box a {
+  color: var(--btn-color);
+  font-weight: 600;
+}
+
+/* --- Team Section --- */
+.team-section {
+  width: 100%;
+  background-color: #fff;
+  padding: 40px 20px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay a {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.overlay a:hover {
+  transform: scale(1.2);
+}
+
+/* Hover Effects */
+.image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.1);
+}
+
+.profile-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.profile-info p {
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 450px) {
+  .auth-box,
+  .signup-box {
+    border: none;
+    background: transparent;
+    padding: 20px;
+  }
+
+  .auth-form-wrapper {
+    width: 100%;
+  }
+
+  .main-container {
+    padding-top: 0;
+  }
+}

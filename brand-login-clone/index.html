@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Clone & Team</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Grand+Hotel&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Auth Section (Instagram Style) -->
+      <section class="auth-section">
+        <div class="auth-container">
+          <!-- Phone Image (Desktop only) -->
+          <div class="auth-images-container">
+            <!-- Placeholder for phone mockups if needed, or just keep it simple as per request to focus on form -->
+          </div>
+
+          <!-- Login Box -->
+          <div class="auth-form-wrapper">
+            <div class="auth-box">
+              <h1 class="logo-text">Instagram</h1>
+
+              <form class="login-form">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    id="email"
+                    required
+                    minlength="5"
+                    placeholder=" "
+                  />
+                  <label for="email">Phone number, username, or email</label>
+                </div>
+
+                <div class="input-group">
+                  <input
+                    type="password"
+                    id="password"
+                    required
+                    minlength="6"
+                    placeholder=" "
+                  />
+                  <label for="password">Password</label>
+                </div>
+
+                <button type="submit" class="login-btn" disabled>Log in</button>
+
+                <div class="divider">
+                  <div class="line"></div>
+                  <div class="or-text">OR</div>
+                  <div class="line"></div>
+                </div>
+
+                <div class="fb-login">
+                  <i class="fab fa-facebook-square"></i>
+                  <span>Log in with Facebook</span>
+                </div>
+
+                <a href="#" class="forgot-password">Forgot password?</a>
+              </form>
+            </div>
+
+            <div class="signup-box">
+              <p>Don't have an account? <a href="#">Sign up</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Section -->
+      <section class="team-section">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+          <!-- Profile Card 1 -->
+          <div class="profile-card">
+            <div class="image-wrapper">
+              <img src="https://via.placeholder.com/150" alt="Team Member" />
+              <div class="overlay">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="profile-info">
+              <h3>Jane Doe</h3>
+              <p>Lead Designer</p>
+            </div>
+          </div>
+
+          <!-- Profile Card 2 -->
+          <div class="profile-card">
+            <div class="image-wrapper">
+              <img src="https://via.placeholder.com/150" alt="Team Member" />
+              <div class="overlay">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="profile-info">
+              <h3>John Smith</h3>
+              <p>Developer</p>
+            </div>
+          </div>
+
+          <!-- Profile Card 3 -->
+          <div class="profile-card">
+            <div class="image-wrapper">
+              <img src="https://via.placeholder.com/150" alt="Team Member" />
+              <div class="overlay">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="profile-info">
+              <h3>Mike Ross</h3>
+              <p>Manager</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Simple script to enable button only if inputs have value (Instagram behavior)
+      const inputs = document.querySelectorAll(".login-form input");
+      const loginBtn = document.querySelector(".login-btn");
+
+      inputs.forEach((input) => {
+        input.addEventListener("input", () => {
+          const allFilled = Array.from(inputs).every(
+            (i) => i.value.length >= 1,
+          );
+          if (allFilled) {
+            loginBtn.removeAttribute("disabled");
+            loginBtn.classList.add("active");
+          } else {
+            loginBtn.setAttribute("disabled", "true");
+            loginBtn.classList.remove("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
