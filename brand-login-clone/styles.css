@@ -357,8 +357,8 @@ a {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 40px;
-  margin-bottom: 50px; /* Reduced margin */
+  margin-top: 20px;
+  margin-bottom: 20px;
   flex: 1;
 }
 
@@ -366,8 +366,8 @@ a {
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 900px;
-  gap: 30px;
+  max-width: 850px;
+  gap: 20px;
 }
 
 .auth-images-container {
@@ -413,7 +413,7 @@ a {
 }
 
 .app-store-img {
-  height: 40px;
+  height: 40px; /* Standard height for app store buttons */
   width: auto;
   cursor: pointer;
 }
