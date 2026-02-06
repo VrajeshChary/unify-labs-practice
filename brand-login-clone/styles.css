@@ -54,6 +54,24 @@ a {
   justify-content: center;
   width: 100%;
   max-width: 900px;
+  gap: 30px;
+}
+
+.auth-images-container {
+  display: none; /* Hidden by default on mobile */
+  background-image: url("../assets/images/auth-splash.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 450px; /* Slightly wider to accommodate dual phones */
+  height: 600px;
+}
+
+/* Show on desktop */
+@media (min-width: 850px) {
+  .auth-images-container {
+    display: block;
+  }
 }
 
 .auth-form-wrapper {
