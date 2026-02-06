@@ -372,13 +372,9 @@ a {
 
 .auth-images-container {
   display: none;
-  background-color: #f0f0f0; /* Visible gray */
-  border: 2px dashed #dbdbdb; /* Visible border */
-  display: flex; /* Centering text */
+  display: flex; /* Centering image/text */
   justify-content: center;
   align-items: center;
-  color: #8e8e8e;
-  font-weight: 500;
 
   background-image: url("../assets/images/insta-pro.png");
   background-size: contain;
