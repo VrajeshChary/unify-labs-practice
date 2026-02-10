@@ -1,34 +1,56 @@
-// 1. Create variables for two numbers
-const number1 = 15;
-const number2 = 4;
+// Number Guessing Game
 
-// 2. Calculate Sum, Product, and Remainder
-const sum = number1 + number2;
-const product = number1 * number2;
-const remainder = number1 % number2;
+// 1. Generate a random number between 1 and 100
+const targetNumber = Math.floor(Math.random() * 100) + 1;
 
-// 3. Output results
-console.log("--- Math Operations ---");
-console.log("Number 1:", number1);
-console.log("Number 2:", number2);
-console.log("Sum:", sum);
-console.log("Product:", product);
-console.log("Remainder:", remainder);
+// 2. Initialize variables
+let attempts = 0;
+const maxAttempts = 10;
+let guessedCorrectly = false;
 
-// 4. Declare user name variable
-const userName = "Alice";
+console.log("Welcome to the Number Guessing Game!");
+console.log("I have picked a number between 1 and 100. Can you guess it?");
 
-// 5. Create welcome message using concatenation
-// Using string concatenation with + operator as per "The Plus Operator Deep-Dive"
-const welcomeMessage =
-  "Welcome, " + userName + "! Your magic number is " + sum + ".";
+// 3. Start the game loop
+while (!guessedCorrectly && attempts < maxAttempts) {
+  // 4. Prompt user for input
+  let input = prompt(
+    `Attempt ${attempts + 1}/${maxAttempts}: Guess the number (1-100):`,
+  );
 
-console.log("\n--- String Operations ---");
-console.log(welcomeMessage);
+  // Handle cancel button
+  if (input === null) {
+    alert("Game Cancelled.");
+    break;
+  }
 
-// 6. Use typeof to debug and inspect data
-console.log("\n--- Data Type Inspection ---");
-console.log("Type of number1:", typeof number1); // number
-console.log("Type of userName:", typeof userName); // string
-console.log("Type of sum:", typeof sum); // number
-console.log("Type of welcomeMessage:", typeof welcomeMessage); // string
+  // 5. Convert string to number
+  let guess = Number(input);
+
+  // 6. Validate input
+  if (isNaN(guess) || input.trim() === "") {
+    alert("Please enter a valid number.");
+    continue; // Skip to next iteration
+  }
+
+  attempts++;
+
+  // 7. Check the guess
+  if (guess === targetNumber) {
+    alert(
+      `Congratulations! You guessed the number ${targetNumber} in ${attempts} attempts.`,
+    );
+    guessedCorrectly = true;
+  } else if (guess < targetNumber) {
+    alert("Too Low! Try again.");
+  } else {
+    alert("Too High! Try again.");
+  }
+}
+
+// 8. Handle Game Over
+if (!guessedCorrectly && attempts >= maxAttempts) {
+  alert(
+    `Game Over! You've used all ${maxAttempts} attempts. The number was ${targetNumber}.`,
+  );
+}
