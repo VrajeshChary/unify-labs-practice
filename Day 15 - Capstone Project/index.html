@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Virtual Core - Terminal OS</title>
+    <style>
+      body {
+        background-color: #0d0d0d;
+        color: #00ff00;
+        font-family: "Courier New", Courier, monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+      }
+      h1 {
+        text-shadow: 0 0 10px #00ff00;
+      }
+      button {
+        background: transparent;
+        color: #00ff00;
+        border: 2px solid #00ff00;
+        padding: 10px 20px;
+        font-family: inherit;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      button:hover {
+        background: #00ff00;
+        color: #0d0d0d;
+        box-shadow: 0 0 20px #00ff00;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>THE VIRTUAL CORE</h1>
+    <p>Terminal OS Simulation</p>
+    <button onclick="startSystem()">INITIALIZE SYSTEM</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
