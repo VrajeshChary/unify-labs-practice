@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Text Formatter</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Smart Text Formatter</h1>
+        <p>Clean, format, and analyze your text.</p>
+      </header>
+
+      <main>
+        <div class="input-group">
+          <label for="userText">Enter your text:</label>
+          <textarea
+            id="userText"
+            placeholder="Type or paste your text here..."
+          ></textarea>
+        </div>
+
+        <div class="input-group hidden" id="secretInputGroup">
+          <label for="secretWord">Word to hide (for Secret Message):</label>
+          <input type="text" id="secretWord" placeholder="e.g., password" />
+        </div>
+
+        <div class="controls">
+          <button id="btnTitleCase" class="btn primary">Title Case</button>
+          <button id="btnCountVowels" class="btn secondary">
+            Count Vowels
+          </button>
+          <button id="btnSecretMessage" class="btn accent">
+            Secret Message
+          </button>
+          <button id="btnStats" class="btn outline">Text Stats</button>
+        </div>
+
+        <div class="output-group">
+          <label>Result:</label>
+          <div id="output" class="output-box"></div>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
