@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 18: Digital Pet Simulator</title>
+  </head>
+  <body>
+    <h1>Digital Pet Simulator</h1>
+    <p>Open the browser console to interact with your pet!</p>
+    <p>Example commands:</p>
+    <ul>
+      <li><code>let myPet = new Pet("Buddy", "Dog");</code></li>
+      <li><code>myPet.feed();</code></li>
+      <li><code>myPet.play();</code></li>
+      <li><code>myPet.getStatus();</code></li>
+    </ul>
+
+    <script src="script.js"></script>
+    <script>
+      // For demonstration purposes
+      const demoPet = new Pet("Fluffy", "Cat");
+      console.log(demoPet.getStatus());
+      console.log("Feeding Fluffy...");
+      demoPet.feed();
+      console.log(demoPet.getStatus());
+      console.log("Playing with Fluffy...");
+      demoPet.play();
+      console.log(demoPet.getStatus());
+    </script>
+  </body>
+</html>
