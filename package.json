@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/VrajeshChary/unify-labs-practice#readme",
   "dependencies": {
+    "express": "^5.2.1",
     "mongodb": "^7.1.0"
   }
 }
