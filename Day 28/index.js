@@ -16,8 +16,11 @@ app.use(express.json());
 
 async function startServer() {
   try {
-    if (!url || url.includes("<username>")) {
+    if (!url || url.includes("<username>") || url.includes("<db_password>")) {
       console.error("ERROR: MONGODB_URI not properly configured in .env file.");
+      console.log(
+        "Please replace <db_password> with your actual Atlas password.",
+      );
       process.exit(1);
     }
 
