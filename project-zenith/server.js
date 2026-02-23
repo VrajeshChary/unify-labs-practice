@@ -1,10 +1,11 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
