@@ -23,10 +23,44 @@ app.get("/api/posts", async (req, res) => {
 });
 
 app.post("/api/posts", async (req, res) => {
-  const { title, content, author } = req.body;
-  const newPost = { title, content, author, date: new Date() };
+  const { title, content, author, category } = req.body;
+  const newPost = {
+    title,
+    content,
+    author,
+    category: category || "General",
+    date: new Date(),
+  };
   await db.collection("blogs").insertOne(newPost);
   res.status(201).json({ message: "post created" });
+});
+
+app.get("/api/posts/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const post = await db
+      .collection("blogs")
+      .findOne({ _id: new ObjectId(id) });
+    res.json(post);
+  } catch (e) {
+    res.status(500).json({ error: "invalid id" });
+  }
+});
+
+app.patch("/api/posts/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { title, content, author, category } = req.body;
+    const updateDoc = {
+      $set: { title, content, author, category },
+    };
+    await db
+      .collection("blogs")
+      .updateOne({ _id: new ObjectId(id) }, updateDoc);
+    res.json({ message: "post updated" });
+  } catch (e) {
+    res.status(500).json({ error: "update failed" });
+  }
 });
 
 app.delete("/api/posts/:id", async (req, res) => {

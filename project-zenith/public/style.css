@@ -1,3 +1,21 @@
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #333;
+  --card-bg: #fff;
+  --border-color: #ddd;
+  --primary-btn: #007bff;
+  --primary-hover: #0056b3;
+  --danger-btn: #dc3545;
+  --danger-hover: #c82333;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --border-color: #333;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +24,12 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #f0f2f5;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   padding: 20px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .container {
@@ -15,38 +37,64 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
+h1 {
+  color: var(--text-color);
+}
+
+.theme-toggle {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
 .form-section {
-  background: #fff;
+  background: var(--card-bg);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
+  border: 1px solid var(--border-color);
 }
 
 .form-section input,
+.form-section select,
 .form-section textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  color: var(--text-color);
   border-radius: 5px;
   font-size: 16px;
 }
 
-.form-section button {
-  background: #007bff;
+.form-section button,
+.modal button {
+  background: var(--primary-btn);
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+.form-section button:hover,
+.modal button.primary:hover {
+  background: var(--primary-hover);
 }
 
 .grid-wrap {
@@ -56,35 +104,113 @@ h1 {
 }
 
 .post-card {
-  background: white;
+  background: var(--card-bg);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.post-card span.category {
+  display: inline-block;
+  background: var(--primary-btn);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-bottom: 10px;
 }
 
 .post-card h2 {
   margin-bottom: 10px;
-  color: #222;
+  cursor: pointer;
+}
+.post-card h2:hover {
+  color: var(--primary-btn);
 }
 
 .post-card p {
-  color: #555;
   margin-bottom: 15px;
   line-height: 1.5;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
-.post-card span {
+.post-meta {
   color: #888;
   font-size: 14px;
 }
 
-.post-card button {
-  background: #dc3545;
-  color: white;
-  border: none;
+.actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
   padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 15px;
+  border: none;
+  color: white;
+}
+
+.btn-edit {
+  background: var(--primary-btn);
+}
+.btn-edit:hover {
+  background: var(--primary-hover);
+}
+.btn-delete {
+  background: var(--danger-btn);
+}
+.btn-delete:hover {
+  background: var(--danger-hover);
+}
+
+/* Modal specific styles */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+}
+
+.modal.active {
   display: block;
+}
+.modal-overlay.active {
+  display: flex;
+}
+
+.close-modal {
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  font-size: 24px;
+  float: right;
+  cursor: pointer;
 }
