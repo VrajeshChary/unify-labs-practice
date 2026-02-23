@@ -7,6 +7,11 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Explicitly serve index.html for the root route on Vercel
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 let db;
