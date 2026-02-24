@@ -22,7 +22,12 @@ let cachedDb = null;
 async function connectDB() {
   if (cachedDb) return cachedDb;
   try {
-    const client = new MongoClient(uri);
+    const options = {
+      tls: true,
+      tlsAllowInvalidCertificates: true,
+      tlsAllowInvalidHostnames: true,
+    };
+    const client = new MongoClient(uri, options);
     await client.connect();
     cachedDb = client.db("unify_ecommerce");
     console.log("Connected to MongoDB Atlas");
