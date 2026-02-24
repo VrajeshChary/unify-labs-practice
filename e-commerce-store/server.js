@@ -35,6 +35,22 @@ connectDB();
 // API ROUTES
 // ==========================================
 
+// Seed database from the cloud (Bypass Local ISP blocks)
+app.get("/api/seed", async (req, res) => {
+  try {
+    const productsList = require("./scripts/products.json");
+    const collection = db.collection("products");
+    await collection.deleteMany({});
+    const result = await collection.insertMany(productsList);
+    res.json({ message: "Seeding successful", count: result.insertedCount });
+  } catch (error) {
+    console.error("Seed error:", error);
+    res
+      .status(500)
+      .json({ error: "Failed to seed database", details: error.message });
+  }
+});
+
 // 1. Get all products (with optional search & category filtering)
 app.get("/api/products", async (req, res) => {
   try {
@@ -54,7 +70,12 @@ app.get("/api/products", async (req, res) => {
     const results = await db.collection("products").find(query).toArray();
     res.json(results);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch products" });
+    console.error(error);
+    res.status(500).json({
+      error: "Failed to fetch products",
+      details: error.message,
+      stack: error.stack,
+    });
   }
 });
 
