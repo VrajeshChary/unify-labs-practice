@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unify Store</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Navigation -->
+    <header class="navbar">
+      <div class="logo">
+        <h1>Unify<span>Store</span></h1>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search products..." />
+        <button onclick="searchProducts()">Search</button>
+      </div>
+
+      <div class="cart-icon" onclick="openCart()">
+        🛒 <span id="cartCount">0</span>
+      </div>
+    </header>
+
+    <!-- Categories Filters -->
+    <nav class="categories">
+      <button class="filter-btn active" onclick="filterCategory('All')">
+        All
+      </button>
+      <button class="filter-btn" onclick="filterCategory('Electronics')">
+        Electronics
+      </button>
+      <button class="filter-btn" onclick="filterCategory('Furniture')">
+        Furniture
+      </button>
+      <button class="filter-btn" onclick="filterCategory('Home')">Home</button>
+      <button class="filter-btn" onclick="filterCategory('Accessories')">
+        Accessories
+      </button>
+    </nav>
+
+    <!-- Store Front Grid -->
+    <main class="container">
+      <!-- Loading Spinner -->
+      <div id="loader" class="loader"></div>
+
+      <!-- Product List -->
+      <div id="productGrid" class="grid">
+        <!-- Products will be injected here via JS -->
+      </div>
+
+      <!-- Empty State Message -->
+      <div id="emptyState" class="empty-state" style="display: none">
+        <h3>No products found 😢</h3>
+        <p>Try searching for something else or clear the filters.</p>
+      </div>
+    </main>
+
+    <!-- Slide-out Cart Sidebar (Modal approach for a cleaner UX without multiple page loads) -->
+    <div id="cartSidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-btn" onclick="closeCart()">×</button>
+      </div>
+
+      <div id="cartItems" class="cart-items">
+        <!-- Cart Items will be injected here via JS -->
+        <p class="empty-cart-msg">Your cart is empty.</p>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalPrice">$0.00</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
