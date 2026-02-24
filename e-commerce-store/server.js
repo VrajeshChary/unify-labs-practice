@@ -1,33 +1,35 @@
 const express = require("express");
-const { MongoClient, ObjectId } = require("mongodb");
+const { MongoClient, ObjectId, ServerApiVersion } = require("mongodb");
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
 
 const app = express();
+const port = process.env.PORT || 3000;
+const uri = process.env.MONGO_URI;
+
+// Middleware
 app.use(cors());
 app.use(express.json());
-
-// Serve static frontend files
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Configure MongoDB
-const uri = process.env.MONGO_URI;
+// Caching MongoDB connection for serverless
 let cachedDb = null;
 
 async function connectDB() {
   if (cachedDb) return cachedDb;
   try {
-    const options = {
-      tls: true,
-      tlsAllowInvalidCertificates: true,
-      tlsAllowInvalidHostnames: true,
-    };
-    const client = new MongoClient(uri, options);
+    const client = new MongoClient(uri, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      },
+    });
     await client.connect();
     cachedDb = client.db("unify_ecommerce");
     console.log("Connected to MongoDB Atlas");
