@@ -17,19 +17,21 @@ app.get("/", (req, res) => {
 
 // Configure MongoDB
 const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri);
-let db;
+let cachedDb = null;
 
 async function connectDB() {
+  if (cachedDb) return cachedDb;
   try {
+    const client = new MongoClient(uri);
     await client.connect();
-    db = client.db("unify_ecommerce");
+    cachedDb = client.db("unify_ecommerce");
     console.log("Connected to MongoDB Atlas");
+    return cachedDb;
   } catch (error) {
     console.error("Failed to connect to MongoDB", error);
+    throw error;
   }
 }
-connectDB();
 
 // ==========================================
 // API ROUTES
@@ -39,6 +41,7 @@ connectDB();
 app.get("/api/seed", async (req, res) => {
   try {
     const productsList = require("./scripts/products.json");
+    const db = await connectDB();
     const collection = db.collection("products");
     await collection.deleteMany({});
     const result = await collection.insertMany(productsList);
@@ -70,6 +73,7 @@ app.get("/api/products", async (req, res) => {
       query.name = { $regex: search, $options: "i" };
     }
 
+    const db = await connectDB();
     const results = await db.collection("products").find(query).toArray();
     res.json(results);
   } catch (error) {
@@ -109,6 +113,7 @@ app.post("/api/orders", async (req, res) => {
       createdAt: new Date(),
     };
 
+    const db = await connectDB();
     const result = await db.collection("orders").insertOne(order);
     res.status(201).json({
       success: true,
