@@ -392,6 +392,32 @@ body {
   margin-bottom: 1rem;
 }
 
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  border-color: var(--primary);
+}
+
+.checkout-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
 .checkout-btn {
   width: 100%;
   padding: 1rem;

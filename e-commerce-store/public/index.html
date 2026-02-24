@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unify Store</title>
+    <title>TITAN Marketplace</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -14,12 +14,16 @@
     <!-- Header Navigation -->
     <header class="navbar">
       <div class="logo">
-        <h1>Unify<span>Store</span></h1>
+        <h1>TITAN<span>Market</span></h1>
       </div>
 
       <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search products..." />
-        <button onclick="searchProducts()">Search</button>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search products..."
+          oninput="searchProducts()"
+        />
       </div>
 
       <div class="cart-icon" onclick="openCart()">
@@ -78,9 +82,31 @@
           <span>Total:</span>
           <span id="cartTotalPrice">$0.00</span>
         </div>
-        <button class="checkout-btn" onclick="checkout()">
-          Proceed to Checkout
-        </button>
+
+        <form
+          id="checkoutForm"
+          class="checkout-form"
+          onsubmit="checkout(event)"
+        >
+          <input
+            type="text"
+            id="customerName"
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            id="customerEmail"
+            placeholder="Email Address"
+            required
+          />
+          <textarea
+            id="customerAddress"
+            placeholder="Shipping Address"
+            required
+          ></textarea>
+          <button type="submit" class="checkout-btn">Complete Order</button>
+        </form>
       </div>
     </div>
 

@@ -218,11 +218,13 @@ function renderCart() {
 // SECURE CHECKOUT
 // ==========================================
 
-async function checkout() {
+async function checkout(event) {
+  event.preventDefault();
   if (cart.length === 0) return alert("Your cart is empty!");
 
-  const customerName = prompt("Enter your name to complete checkout:");
-  if (!customerName) return;
+  const customerName = document.getElementById("customerName").value;
+  const customerEmail = document.getElementById("customerEmail").value;
+  const customerAddress = document.getElementById("customerAddress").value;
 
   // Calculate total on frontend for body payload
   const totalAmount = cart.reduce(
@@ -232,6 +234,8 @@ async function checkout() {
 
   const orderData = {
     customer: customerName,
+    email: customerEmail,
+    address: customerAddress,
     items: cart.map((item) => ({
       productId: item._id,
       name: item.name,
@@ -242,7 +246,7 @@ async function checkout() {
   };
 
   try {
-    const res = await fetch("/api/checkout", {
+    const res = await fetch("/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),
@@ -260,6 +264,7 @@ async function checkout() {
       closeCart();
       updateCartIcon();
       renderProducts(allProducts); // Reset add buttons
+      document.getElementById("checkoutForm").reset(); // clear the form
     } else {
       alert("Checkout failed. Please try again.");
     }

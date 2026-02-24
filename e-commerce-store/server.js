@@ -54,7 +54,10 @@ app.get("/api/seed", async (req, res) => {
 // 1. Get all products (with optional search & category filtering)
 app.get("/api/products", async (req, res) => {
   try {
-    const { category, search } = req.query;
+    const category =
+      typeof req.query.category === "string" ? req.query.category : null;
+    const search =
+      typeof req.query.search === "string" ? req.query.search : null;
     let query = {};
 
     // Exact match for category
@@ -80,13 +83,26 @@ app.get("/api/products", async (req, res) => {
 });
 
 // 2. Submit a checkout order
-app.post("/api/checkout", async (req, res) => {
+app.post("/api/orders", async (req, res) => {
   try {
-    const { customer, items, total } = req.body;
+    const { customer, email, address, items, total } = req.body;
+
+    // Basic NoSQL Injection Prevention: Ensure types are correct and not objects
+    if (
+      typeof customer !== "string" ||
+      typeof email !== "string" ||
+      typeof address !== "string" ||
+      typeof total !== "number" ||
+      !Array.isArray(items)
+    ) {
+      return res.status(400).json({ error: "Invalid input data format" });
+    }
 
     // In a real app, calculate total on server-side to prevent tampering
     const order = {
-      customer,
+      customer: customer.trim(),
+      email: email.trim(),
+      address: address.trim(),
       items,
       total,
       status: "pending",
@@ -100,6 +116,7 @@ app.post("/api/checkout", async (req, res) => {
       message: "Order placed successfully!",
     });
   } catch (error) {
+    console.error("Checkout error:", error);
     res.status(500).json({ error: "Failed to process checkout" });
   }
 });
